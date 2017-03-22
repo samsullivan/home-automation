@@ -1,6 +1,6 @@
 {
   "name": "home-automation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node server for miscellaneous home automation tasks; deploys to Raspberry Pi via Resin.",
   "main": "server.js",
   "scripts": {
