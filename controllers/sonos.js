@@ -3,7 +3,7 @@ var router = express.Router()
 var Sonos = require('../models/sonos')
 
 router.use(function (req, res, next) {
-  if (Sonos.getSpeakerCount()) next()
+  if (Sonos.hasSpeakers()) next()
   res.status(500).send('No Sonos speakers detected.')
 })
 
