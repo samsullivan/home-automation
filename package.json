@@ -1,0 +1,22 @@
+{
+  "name": "home-automation",
+  "version": "0.1.0",
+  "description": "Node server for miscellaneous home automation tasks; deploys to Raspberry Pi via Resin.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samsullivan/home-automation.git"
+  },
+  "author": "Sam Sullivan <samsullivan09@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samsullivan/home-automation/issues"
+  },
+  "homepage": "https://github.com/samsullivan/home-automation#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
