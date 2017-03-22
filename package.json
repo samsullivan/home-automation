@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/samsullivan/home-automation#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "sonos-discovery": "https://github.com/jishi/node-sonos-discovery/archive/v1.4.1.tar.gz"
   },
   "devDependencies": {
     "standard": "^9.0.2"
