@@ -1,6 +1,6 @@
 {
   "name": "home-automation",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Node server for miscellaneous home automation tasks; deploys to Raspberry Pi via Resin.",
   "main": "server.js",
   "scripts": {
@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/samsullivan/home-automation#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "sonos-discovery": "https://github.com/jishi/node-sonos-discovery/archive/v1.4.1.tar.gz"
   },
   "devDependencies": {
     "standard": "^9.0.2"
