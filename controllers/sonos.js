@@ -38,4 +38,39 @@ router.post('/volume/:action/:increment', function (req, res, next) {
   res.json({success: true})
 })
 
+router.post('/action', function (req, res) {
+  if (!req.body || !req.body.result) {
+    res.status(500).json({
+      success: false,
+      error: 'Invalid JSON body.'
+    })
+    return
+  }
+
+  var params = req.body.result.parameters
+  switch (req.body.result.action) {
+    case 'change_volume':
+      var number = parseInt(params.number)
+      switch (params.verb) {
+        case 'up':
+          Sonos.incrementVolume(number)
+          break
+        case 'down':
+          Sonos.incrementVolume(-number)
+          break
+        default:
+          Sonos.setVolume(number)
+      }
+      break
+    default:
+      res.status(404).json({
+        success: false,
+        error: 'Unknown action.'
+      })
+      return
+  }
+
+  res.json({success: true})
+})
+
 module.exports = router
