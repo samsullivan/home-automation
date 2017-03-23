@@ -40,7 +40,7 @@ router.post('/volume/:action/:increment', function (req, res, next) {
 
 router.post('/action', function (req, res) {
   if (!req.body || !req.body.result) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
       error: 'Invalid JSON body.'
     })
@@ -70,7 +70,10 @@ router.post('/action', function (req, res) {
       return
   }
 
-  res.json({success: true})
+  res.json({
+    success: true,
+    speech: req.body.result.fulfillment.messages[0].speech
+  })
 })
 
 module.exports = router
