@@ -4,33 +4,38 @@ var Sonos = require('../models/sonos')
 
 router.use(function (req, res, next) {
   if (!Sonos.hasSpeakers()) {
-    res.status(500).send('No Sonos speakers detected.')
+    res.status(500).json({
+      success: false,
+      error: 'No Sonos speakers found.'
+    })
   }
 
   next()
 })
 
-router.get('/', function (req, res) {
-  res.send(Sonos.getSpeakerCount() + ' Sonos speaker(s) detected.')
-})
-
 router.post('/volume/:volume', function (req, res) {
-  Sonos.setVolume(req.params.volume)
-  res.send('Success!')
+  var volume = parseInt(req.params.volume)
+  Sonos.setVolume(volume)
+
+  res.json({success: true})
 })
 
-router.post('/volume/up/:volume', function (req, res) {
-  var incrementor = parseInt(req.params.volume)
+router.post('/volume/:action/:increment', function (req, res, next) {
+  var increment = 0
+  switch (req.params.action) {
+    case 'up':
+      increment = parseInt(req.params.increment)
+      break
+    case 'down':
+      increment = -parseInt(req.params.increment)
+      break
+    default:
+      next()
+      return
+  }
+  Sonos.incrementVolume(increment)
 
-  Sonos.incrementVolume(incrementor)
-  res.send('Success!')
-})
-
-router.post('/volume/down/:volume', function (req, res) {
-  var incrementor = -parseInt(req.params.volume)
-
-  Sonos.incrementVolume(incrementor)
-  res.send('Success!')
+  res.json({success: true})
 })
 
 module.exports = router
